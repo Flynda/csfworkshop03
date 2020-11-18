@@ -1,0 +1,92 @@
+<div class="container">
+    <mat-toolbar color="primary">
+        <span>ToDo</span>
+    </mat-toolbar>
+
+    <form [formGroup]="todoForm" (ngSubmit)="processForm()">
+
+        <mat-form-field appearance="standard" class="full-width">
+            <mat-label>Description</mat-label>
+            <input type="text" matInput formControlName="description" placeholder="Description of task">
+            <mat-error *ngIf="todoForm.get('description').hasError('required')">
+              Task description is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+        <div>
+            <mat-radio-group formControlName="priority">
+                <mat-label>Priority:</mat-label>
+                <mat-radio-button value="high">High</mat-radio-button>
+                <mat-radio-button value="medium">Medium</mat-radio-button>
+                <mat-radio-button value="low">Low</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Due: </mat-label>
+            <input matInput 
+                formControlName="due" 
+                [matDatepicker]="datepicker">
+            <mat-datepicker-toggle matSuffix 
+                [for]="datepicker">
+            </mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+            </mat-datepicker>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="todoForm.invalid">
+            Add
+        </button>
+    </form>
+</div>
+
+<div class="container">
+    <mat-toolbar color="primary">
+        <span>Tasks</span>
+    </mat-toolbar>
+
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due</th>
+        </tr>
+        <tr *ngFor="let task of tasks">
+            <td>{{task.description}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.due}}</td>
+        </tr>
+    </table>
+
+    <!-- <table mat-table [dataSource]="task" class="mat-elevation-z8">
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>
+                Description
+            </th>
+            <td mat-cell *matCellDef="let task">
+                {{task.description}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef>
+                Priority
+            </th>
+            <td mat-cell *matCellDef="let task">
+                {{task.priority}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="due">
+            <th mat-header-cell *matHeaderCellDef>
+                Due
+            </th>
+            <td mat-cell *matCellDef="let task">
+                {{task.due}}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> -->
+</div>
