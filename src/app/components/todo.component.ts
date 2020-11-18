@@ -39,12 +39,11 @@ export class TodoComponent implements OnInit {
       this.todoForm.value.priority,
       this.todoForm.value.due.format('ll')
     )
-    this.todoForm.reset
-    // this.todoForm.value.priority = ''
-    // this.todoForm.value.due = ''
 
     console.log(addToDo);
     this.tasks.push(addToDo)
+
+    this.todoForm.reset()
   }
 
   displayedColumns: string[] = ['description', 'priority', 'due'];
