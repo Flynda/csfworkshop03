@@ -5,3 +5,7 @@ table, .full-width {
 form {
     background-color: cornflowerblue;
 }
+
+td {
+    text-align: center;
+}

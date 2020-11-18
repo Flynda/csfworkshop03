@@ -26,7 +26,8 @@
             <mat-label>Due: </mat-label>
             <input matInput 
                 formControlName="due" 
-                [matDatepicker]="datepicker">
+                [matDatepicker]="datepicker"
+                [min]="minDate">
             <mat-datepicker-toggle matSuffix 
                 [for]="datepicker">
             </mat-datepicker-toggle>
