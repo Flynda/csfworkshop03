@@ -20,3 +20,9 @@ improve display of tasks - no changes yet
     - using mat-table somehow breaks the tasks - nothing is shown?
 todo:
 optional workshop
+
+Fourth update:
+complete - done
+delete - done
+edit - todo
+persist to local storage - todo

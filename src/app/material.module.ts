@@ -7,6 +7,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 const MATERIAL = [ 
     MatToolbarModule, 
@@ -16,7 +18,9 @@ const MATERIAL = [
     MatDatepickerModule,
     MatMomentDateModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatIconModule
 ];
 
 @NgModule({
