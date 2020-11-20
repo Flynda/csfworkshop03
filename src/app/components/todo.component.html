@@ -1,7 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="gappx">
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1vw">
     <mat-toolbar color="primary">
         <span>ToDo</span>
     </mat-toolbar>
+    <mat-divider></mat-divider>
     <mat-card>
         <mat-card-header>
             <mat-card-title>
@@ -48,40 +49,43 @@
             </form>
         </mat-card-content>
     </mat-card>
+
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Task List
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <table>
+                <thead>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Due</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let task of tasks; let i = index;" [ngClass]="{'strike': task.status}">
+                        <td>{{task.description}}</td>
+                        <td>{{task.priority}}</td>
+                        <td>{{task.due}}</td>
+                        <td>
+                            <button (click)="complete(i)" mat-raised-button>
+                                <mat-icon aria-hidden="false" aria-label="done">done</mat-icon>
+                            </button>
+                        </td>
+                        <td>
+                            <button (click)="delete(i)" mat-raised-button>
+                                <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
 </div>
-
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            Task List
-        </mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-        <table>
-            <tr>
-                <th>Description</th>
-                <th>Priority</th>
-                <th>Due</th>
-            </tr>
-            <tr *ngFor="let task of tasks; let i = index;" [ngClass]="{'strike': task.status}">
-                <td>{{task.description}}</td>
-                <td>{{task.priority}}</td>
-                <td>{{task.due}}</td>
-                <td>
-                    <button (click)="complete(i)">
-                        <mat-icon aria-hidden="false" aria-label="done">done</mat-icon>
-                    </button>
-                </td>
-                <td>
-                    <button (click)="delete(i)">
-                        <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon>
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </mat-card-content>
-</mat-card>
 
 <!-- <table mat-table [dataSource]="tasks" class="mat-elevation-z8">
     <ng-container matColumnDef="description">
